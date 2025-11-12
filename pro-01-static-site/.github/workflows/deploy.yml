@@ -1,0 +1,22 @@
+name: "Project 01: Project Static website"
+
+on:
+    push:
+        branches: 
+            - main
+        paths:
+            - 'pro-01-static-site/**'
+            - '.github/workflows/deploy.yml'
+    
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+
+        
+jobs:
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
