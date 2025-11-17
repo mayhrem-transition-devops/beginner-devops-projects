@@ -5,7 +5,7 @@ on:
         branches: 
             - main
         paths:
-            - 'pro-01-static-site/**'
+            - 'pro-01-static-site/app/**'
             - '.github/workflows/docker-build.yml'
     
 permissions:
