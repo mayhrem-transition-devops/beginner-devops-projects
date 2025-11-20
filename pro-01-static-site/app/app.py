@@ -11,15 +11,15 @@ def get_users():
 def get_user(id):
     return jsonify({"message": f'success get id: {id}'})
 
-@app.route('/api/v1/users', method=['POST'])
+@app.route('/api/v1/users', methods=['POST'])
 def create_user():
     return jsonify({'message': 'success create'})
 
-@app.route('/api/v1/users/<id>', method=['PUT'])
+@app.route('/api/v1/users/<id>', methods=['PUT'])
 def update_user():
     return jsonify({'message': f'success update: {id}'})
 
-@app.route('/api/v1/users/<id>', method=['DELETE'])
+@app.route('/api/v1/users/<id>', methods=['DELETE'])
 def delete_user():
     return jsonify({'message': f'success delete: {id}'})
 
