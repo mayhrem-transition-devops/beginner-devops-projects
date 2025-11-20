@@ -1,12 +1,28 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    version = os.environ.get("APP_VERSION", "1.0.0")
-    return f'<h1>Hello from the DevOps Container</h1><p>Version: {version}</p>'
+@app.route('/api/v1/users', methods=['GET'])
+def get_users():
+    return jsonify({"message":"success get all"})
+
+@app.route('/api/v1/users/<id>', methods=['GET'])
+def get_user(id):
+    return jsonify({"message": f'success get id: {id}'})
+
+@app.route('/api/v1/users', method=['POST'])
+def create_user():
+    return jsonify({'message': 'success create'})
+
+@app.route('/api/v1/users/<id>', method=['PUT'])
+def update_user():
+    return jsonify({'message': f'success update: {id}'})
+
+@app.route('/api/v1/users/<id>', method=['DELETE'])
+def delete_user():
+    return jsonify({'message': f'success delete: {id}'})
+
 
 if __name__== '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000) 
