@@ -1,0 +1,41 @@
+name: API Integration Test  - Pro-01 Flask App
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'pro-01-static-site/app/**'
+
+jobs:
+    api-test:
+        runs-on: ubuntu-latest
+
+
+        #? 1. Define API Service container
+        services:
+            flask-api:
+                image: 
+                    mayhrem/flask-app:latest
+                ports:
+                    - 5000:5000
+                
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        
+        #? 2. Test the API using curl -> or a custom test runner container
+        - name: Run API Tests
+            #? Use a lightweight contianer that has curl installed to run test commands
+            uses: docker://curlimages/curl:latest
+            with:
+                args: |
+                    #! Waiting a few seconds for the Flask App to start up
+                    /bin/bash -c "sleep 5"
+
+                    
+        
+
+            
+
+
