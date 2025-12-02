@@ -1,36 +1,37 @@
-name: API Integration Test  - Pro-01 Flask App
+name: API Integration Test (Pro-01 Flask App)
 
 on:
-    push:
-        branches:
-            - main
-        paths:
-            - 'pro-01-static-site/app/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'pro-01-static-site/app/**' 
 
 jobs:
-    api-test:
-        runs-on: ubuntu-latest
+  api_test: # Ensure this job ID is properly defined and indented
+    runs-on: ubuntu-latest
 
+    # Define the API service container
+    services:
+      flask-api:  # <-- Internal hostname for the test script to use
+        image: mayhrem/flask-app:latest
+        ports:
+          - 5000:5000 # Expose port 5000 from the container
 
-        #? 1. Define API Service container
-        services:
-            flask-api:
-                image: 
-                    mayhrem/flask-app:latest
-                ports:
-                    - 5000:5000
-                
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-        
-        #? 2. Test the API using curl -> or a custom test runner container for unit testing
-        - name: Run API Tests
-          run: |
-                #! Waiting a few seconds for the Flask App to start up
-                chmod +x ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
-                ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
-                    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run RESTful API Tests
+      # We now use the standard 'run' command to execute the script from the checked-out repository
+      run: |
+        # Corrected: Use the path relative to the repository root.
+        # Corrected: Script name should be 'run_tests.sh' (plural)
+        chmod +x ./pro-01-static-site/test/run_tests.sh
+        ./pro-01-static-site/test/run_tests.sh
+      env:
+        # Crucial: This environment variable is needed by the bash script to know where to send requests
+        API_BASE_URL: http://flask-api:5000/api/v1/users
         
 
             
