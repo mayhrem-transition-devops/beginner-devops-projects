@@ -27,9 +27,9 @@ jobs:
         #? 2. Test the API using curl -> or a custom test runner container for unit testing
         - name: Run API Tests
           run: |
-                    #! Waiting a few seconds for the Flask App to start up
-                    chmod +x ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
-                    ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
+                #! Waiting a few seconds for the Flask App to start up
+                chmod +x ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
+                ./beginner-devops-projects/pro-01-static-site/test/run_test.sh
                     
         
 
