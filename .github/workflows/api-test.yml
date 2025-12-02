@@ -24,7 +24,7 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
         
-        #? 2. Test the API using curl -> or a custom test runner container
+        #? 2. Test the API using curl -> or a custom test runner container for unit testing
         - name: Run API Tests
           run: |
                     #! Waiting a few seconds for the Flask App to start up
