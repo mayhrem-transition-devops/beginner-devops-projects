@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'pro-01-static-site/app/**' 
+      - 'pro-01-static-site/test/**' 
 
 jobs:
   api_test: # Ensure this job ID is properly defined and indented
