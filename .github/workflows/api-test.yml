@@ -20,7 +20,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Run RESTful API Tests
       # We now use the standard 'run' command to execute the script from the checked-out repository
